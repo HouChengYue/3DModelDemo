@@ -1,10 +1,13 @@
 package com.wyk.a3dmodeldemo;
 
+import static android.opengl.GLSurfaceView.RENDERMODE_WHEN_DIRTY;
+
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         GLSurfaceView view = new GLSurfaceView(this);
-        view.setRenderer(new OpenGLRenderer());
+        view.setRenderer(new OpenGLRenderer(view));
+//        view.setRenderMode(RENDERMODE_WHEN_DIRTY);
         setContentView(view);
     }
 }

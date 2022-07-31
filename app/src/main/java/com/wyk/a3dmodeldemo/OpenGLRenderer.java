@@ -1,5 +1,7 @@
 package com.wyk.a3dmodeldemo;
 
+import static android.opengl.GLSurfaceView.RENDERMODE_WHEN_DIRTY;
+
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 
@@ -11,14 +13,20 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class OpenGLRenderer implements GLSurfaceView.Renderer {
     private Mesh root;
-
-    public OpenGLRenderer() {
+    private GLSurfaceView mGLSurfaceView;
+    public OpenGLRenderer(GLSurfaceView view) {
+        this.mGLSurfaceView=view;
         // Initialize our cube.
         Group group = new Group();
-        Cube cube = new Cube(1, 1, 1);
-        cube.rx = 45;
-        cube.ry = 45;
-        group.add(cube);
+//        Cube cube = new Cube(1, 1, 1);
+//        cube.rx = 45;
+//        cube.ry = 45;
+//        group.add(cube);
+
+
+        Wind wind=new Wind(0.05f, 1,mGLSurfaceView);
+        wind.ry=60;
+        group.add(wind);
         root = group;
     }
     /*
