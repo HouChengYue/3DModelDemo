@@ -17,8 +17,8 @@ public class Wind extends Mesh {
     private static final String TAG = "Wind";
     private GLSurfaceView mGLSurfaceV1iew;
     private float stage = 0.01f;
-    private float mMax = 0.025f;
-    private float mMin = 0.025f;
+    private float mMax = 0.015f;
+    private float mMin = 0.005f;
 
     private ThreadPoolExecutor mExecutor = new ThreadPoolExecutor(1, 3, 500, TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<>(), r -> new Thread(r, TAG));
@@ -31,8 +31,11 @@ public class Wind extends Mesh {
             while (true) {
                 try {
                     notify(width, depth);
-                    Thread.sleep(500);
+                    Thread.sleep(50);
                     time += 1;
+                    if (time==720){
+                        time=0;
+                    }
                 } catch (Exception e) {
 
                 }
@@ -44,7 +47,7 @@ public class Wind extends Mesh {
         int row = ((int) (width / stage));
         int lines = (int) (depth / stage);
         float startx = -0.5F * width;
-        float startz = -1;
+        float startz = 0;
         float[] vertices = new float[(lines + 1) * (row + 1) * 3];
         short indices[] = new short[lines * row * 2 * 3];
         int vPosition = 0, iPositon = 0;
@@ -53,8 +56,10 @@ public class Wind extends Mesh {
                 float v = mMax - mMin;
                 vertices[vPosition] = startx + (x * stage);
                 vertices[vPosition + 2] = startz + (z * stage);
-                float v1 = mMax - (v * vertices[vPosition + 2]);
-                vertices[vPosition + 1] = v1 * (float) Math.sin(time + Math.toRadians(vertices[vPosition + 2] * 720));
+                float vertZ = vertices[vPosition + 2];
+                float v1 = mMin + (v * vertZ);
+                float v2 =1F-(0.01F*v*vertZ);
+                vertices[vPosition + 1] = v1 * (float) Math.sin(0.25F*time +v2* Math.toRadians(vertZ * 720));
                 if (z > 1 && x < row) {
                     int verPosition = vPosition / 3;
                     indices[iPositon] = (short) (verPosition - row - 1);
@@ -70,6 +75,7 @@ public class Wind extends Mesh {
         }
         setVertices(vertices);
         setIndices(indices);
+        setColor(0.6f, 0.6f, 0.6f, 0.6f);
         mGLSurfaceV1iew.requestRender();
     }
 

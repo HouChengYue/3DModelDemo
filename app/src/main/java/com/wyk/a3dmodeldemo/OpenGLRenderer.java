@@ -12,10 +12,12 @@ import javax.microedition.khronos.opengles.GL10;
  */
 
 public class OpenGLRenderer implements GLSurfaceView.Renderer {
+    private final Wind mWind;
     private Mesh root;
     private GLSurfaceView mGLSurfaceView;
+
     public OpenGLRenderer(GLSurfaceView view) {
-        this.mGLSurfaceView=view;
+        this.mGLSurfaceView = view;
         // Initialize our cube.
         Group group = new Group();
 //        Cube cube = new Cube(1, 1, 1);
@@ -24,11 +26,12 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 //        group.add(cube);
 
 
-        Wind wind=new Wind(0.05f, 1,mGLSurfaceView);
-        wind.ry=60;
-        group.add(wind);
+        mWind = new Wind(0.05f, 1, mGLSurfaceView);
+
+        group.add(mWind);
         root = group;
     }
+
     /*
      * (non-Javadoc)
      *
@@ -75,12 +78,12 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 
 
     /*
-         * (non-Javadoc)
-         *
-         * @see
-         * android.opengl.GLSurfaceView.Renderer#onSurfaceChanged(javax.microedition
-         * .khronos.opengles.GL10, int, int)
-         */
+     * (non-Javadoc)
+     *
+     * @see
+     * android.opengl.GLSurfaceView.Renderer#onSurfaceChanged(javax.microedition
+     * .khronos.opengles.GL10, int, int)
+     */
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         // Sets the current view port to the new size.
@@ -96,6 +99,14 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
         gl.glMatrixMode(GL10.GL_MODELVIEW);
         // Reset the modelview matrix
         gl.glLoadIdentity();
+    }
+
+    public void setModeX(int i, float xDegree) {
+        mWind.ry = xDegree;
+    }
+
+    public void setModey(int i, float yDegree) {
+        mWind.rx = yDegree;
     }
 }
 
