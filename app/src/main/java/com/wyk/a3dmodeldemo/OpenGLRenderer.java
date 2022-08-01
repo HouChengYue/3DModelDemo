@@ -1,7 +1,6 @@
 package com.wyk.a3dmodeldemo;
 
-import static android.opengl.GLSurfaceView.RENDERMODE_WHEN_DIRTY;
-
+import android.graphics.Bitmap;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 
@@ -13,10 +12,12 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class OpenGLRenderer implements GLSurfaceView.Renderer {
     private final Wind mWind;
+    private final Bitmap mBitmap;
     private Mesh root;
     private GLSurfaceView mGLSurfaceView;
 
-    public OpenGLRenderer(GLSurfaceView view) {
+    public OpenGLRenderer(GLSurfaceView view, Bitmap bitmap) {
+        mBitmap = bitmap;
         this.mGLSurfaceView = view;
         // Initialize our cube.
         Group group = new Group();
@@ -26,8 +27,8 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 //        group.add(cube);
 
 
-        mWind = new Wind(0.05f, 1, mGLSurfaceView);
-
+        mWind = new Wind(0.5f, 1, mGLSurfaceView);
+        mWind.loadBitmap(mBitmap);
         group.add(mWind);
         root = group;
     }

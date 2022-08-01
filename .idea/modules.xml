@@ -7,6 +7,12 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/3DModelDemo.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/3DModelDemo.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/3DModelDemo.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/3DModelDemo.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/3DModelDemo.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/3DModelDemo.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/car3D/3DModelDemo.car3D.iml" filepath="$PROJECT_DIR$/.idea/modules/car3D/3DModelDemo.car3D.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo.3DModelDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/demo.3DModelDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/demo.3DModelDemo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/demo.3DModelDemo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/demo.3DModelDemo.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/demo.3DModelDemo.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/demo.3DModelDemo.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/demo.3DModelDemo.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/demo.3DModelDemo.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/demo.3DModelDemo.app.unitTest.iml" />
     </modules>
   </component>
 </project>

@@ -2,6 +2,8 @@ package com.wyk.a3dmodeldemo;
 
 import static android.opengl.GLSurfaceView.RENDERMODE_WHEN_DIRTY;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -21,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.img);
         GLSurfaceView view = new GLSurfaceView(this);
-        OpenGLRenderer openGLRenderer = new OpenGLRenderer(view);
+        OpenGLRenderer openGLRenderer = new OpenGLRenderer(view,bitmap);
         view.setRenderer(openGLRenderer);
         view.setOnTouchListener(new View.OnTouchListener() {
 
